@@ -39,25 +39,25 @@ Here is my basic config. I'll explain about `plugins` in [Plugins](#plugins).
 ```lua
 -- lazy.nvim spec
 local M = {
-    "nvim-neorg/neorg",
-    ft = "norg",
-    dependencies = {
-        "nvim-treesitter/nvim-treesitter",
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        "nvim-cmp",
-        "nvim-lua/plenary.nvim",
-    },
-    build = ":Neorg sync-parsers",
-    cmd = "Neorg",
+  "nvim-neorg/neorg",
+  ft = "norg",
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    "nvim-cmp",
+    "nvim-lua/plenary.nvim",
+  },
+  build = ":Neorg sync-parsers",
+  cmd = "Neorg",
 }
 local plugins = {
-    ["core.defaults"] = {},
-    ["core.norg.completion"] = { config = { engine = "nvim-cmp", name = "[Norg]" } },
-    ["core.integrations.nvim-cmp"] = {},
-    ["core.export"] = {},
+  ["core.defaults"] = {},
+  ["core.norg.completion"] = { config = { engine = "nvim-cmp", name = "[Norg]" } },
+  ["core.integrations.nvim-cmp"] = {},
+  ["core.export"] = {},
 }
 M.opts = {
-    load = plugins,
+  load = plugins,
 }
 return M
 ```
@@ -177,14 +177,14 @@ You can convert your `norg` notes to different formats.
 This is a function to export to `suffix` with the same dir and name of current file.
 ```lua
 local export_file = function(suffix, open_preview)
-    local dst = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.:r") .. suffix -- same name but with suffix
-    vim.cmd(string.format([[Neorg export to-file %s]], string.gsub(dst, " ", [[\ ]])))
-    vim.schedule(function()
-        vim.cmd.edit(dst)
-        if suffix == ".md" and open_preview then
-            vim.cmd([[MarkdownPreview]]) -- https://github.com/iamcco/markdown-preview.nvim
-        end
-    end)
+  local dst = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.:r") .. suffix -- same name but with suffix
+  vim.cmd(string.format([[Neorg export to-file %s]], string.gsub(dst, " ", [[\ ]])))
+  vim.schedule(function()
+    vim.cmd.edit(dst)
+    if suffix == ".md" and open_preview then
+      vim.cmd([[MarkdownPreview]]) -- https://github.com/iamcco/markdown-preview.nvim
+    end
+  end)
 end
 -- export_file(".md", true)
 ```
@@ -204,25 +204,25 @@ I already mentioned the necessary ones in [Kickstart Config](#kickstart-config),
 ["core.looking-glass"] = {},
 ["core.presenter"] = { config = { zen_mode = "zen-mode" } },
 ["core.norg.journal"] = {
-    config = {
-        strategy = "flat",
-        workspace = "Notes",
-    },
+  config = {
+    strategy = "flat",
+    workspace = "Notes",
+  },
 },
 ["core.norg.dirman"] = {
-    config = {
-        workspaces = {
-            Notes = "~/Nextcloud/Notes",
-            Work = "~/Nextcloud/Work",
-        }
+  config = {
+    workspaces = {
+      Notes = "~/Nextcloud/Notes",
+      Work = "~/Nextcloud/Work",
     }
+  }
 },
 ["core.keybinds"] = {
-    -- https://github.com/nvim-neorg/neorg/blob/main/lua/neorg/modules/core/keybinds/keybinds.lua
-    config = {
-        default_keybinds = true,
-        neorg_leader = "<Leader><Leader>",
-    },
+  -- https://github.com/nvim-neorg/neorg/blob/main/lua/neorg/modules/core/keybinds/keybinds.lua
+  config = {
+    default_keybinds = true,
+    neorg_leader = "<Leader><Leader>",
+  },
 },
 ```
 
@@ -267,6 +267,30 @@ If you want to create your own plugin for neorg, this video is very useful.
 
 # Tips
 
+
+
+## Embed Images
+
+As far as I know, there are **NO** specifications about how to embed / link to an image.
+
+
+### Discussions
+
+- [Is there any way to insert a image just like kitty icat does #768](https://github.com/nvim-neorg/neorg/discussions/768)
+- [render.nvim #791](https://github.com/nvim-neorg/neorg/discussions/791)
+
+
+### Workaround
+
+
+As a workaround, funny enough, you can prepend a link with `!` like `!{path}[name]` to link to an image,
+which will be correctly converted to image tag when exported to markdown files.
+(Of course this only works with markdown and I hope this will not become the correct way.)
+```norg
+!{https://user-images.githubusercontent.com/76052559/150838408-1a021d7b-1891-4cab-b16e-6b755e741e87.png}
+```
+Example:
+![https://user-images.githubusercontent.com/76052559/150838408-1a021d7b-1891-4cab-b16e-6b755e741e87.png](https://user-images.githubusercontent.com/76052559/150838408-1a021d7b-1891-4cab-b16e-6b755e741e87.png)
 
 
 ## Sync with Git, Nextcloud, etc
