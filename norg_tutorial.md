@@ -84,17 +84,17 @@ Below text is a sample note which explains about the norg syntax.
 Run `:Neorg toggle-concealer` to see the raw text.
 
 
-# Heading 1: [Structural Detached Modifiers](specifications.md#structural-detached-modifiers)
+# Heading 1: [Structural Detached Modifiers](1.0-specification.md#structural-detached-modifiers)
 
 Normal text here.
 Single new line will be ignored.
 
-Double new line means a new paragraph.
+Double new lines mean a new paragraph.
 
 
 ## Heading 2
 
-Indentation of normal text is advised to align with the start of the heading.
+Indentation of normal text is advised to align with the start of the heading name.
 See? The indentation of this text is different from the ones in [Heading 1](#heading-1).
 
 Oh, BTW that's how you create in-document links. Literal heading name wrapped in `{}`.
@@ -104,29 +104,29 @@ More about links in [links](#links)
 
 With `---`, you can decrease the heading level. This text is inside [Heading 1](#heading-1) again.
 
-- Bullet List: [Unordered Lists](specifications.md#unordered-lists)
+- Bullet List: [Unordered Lists](1.0-specification.md#unordered-lists)
     - Second level bullet is with `--` and not an indented `-`.
         - Third level
     - Second level
 
-1. Numbered List: [Ordered Lists](specifications.md#ordered-lists)
-    1. It's `~`, not `1.`
+1. Numbered List: [Ordered Lists](1.0-specification.md#ordered-lists)
+    1. It's `~`, not `1.` (Tho the conceal makes it look like that)
     - Can be mixed with bullets as well.
 2. Second
 
-[Quotes](specifications.md#quotes)
+[Quotes](1.0-specification.md#quotes)
 > Quotes
 >> Quote level 2
 
-- You can use [TODO lists](specifications.md#todo-status-extension) in combination with these lists.
-    - I highly suggest read this section as well.
+- You can use [TODO lists](1.0-specification.md#todo-status-extension) in combination with these lists.
+    - I highly suggest reading this section as well.
 
 
-# Links: [Link Location](specifications.md#link-location)
+# Links: [Link Location](1.0-specification.md#link-location)
 
 There are so so many types of useful links in `norg`.
 You can also press `<Enter>` on all links to open the appropriate application.
-(e.g. urls are opened on the browser.)
+(e.g. urls are opened in the browser.)
 
 Again, `Vhyrro` does a great job explaining about links in his video,
 [From No Org to Neorg #2: 17:44~](https://youtu.be/Bi9JiW5nSig%3ft=17m44s) so go ahead and watch that video.
@@ -171,7 +171,7 @@ You can convert your `norg` notes to different formats.
 
 `:Neorg export to-file foo.md` -> Exports to `foo.md` in markdown format.
 
-This is a function to export to `suffix` with the same dir and name of current file
+This is a function to export to `suffix` with the same dir and name of current file.
 ```lua
 local export_file = function(suffix, open_preview)
     local dst = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.:r") .. suffix -- same name but with suffix
@@ -179,7 +179,7 @@ local export_file = function(suffix, open_preview)
     vim.schedule(function()
         vim.cmd.edit(dst)
         if suffix == ".md" and open_preview then
-            vim.cmd([[MarkdownPreview]])
+            vim.cmd([[MarkdownPreview]]) -- https://github.com/iamcco/markdown-preview.nvim
         end
     end)
 end
@@ -192,7 +192,7 @@ end
 Keys passed to `config.load` are name of plugins. Their documents can be found in
 [Neorg - Wiki](https://github.com/nvim-neorg/neorg/wiki) -> Pages.
 
-I already mentioned the necessary ones in [Kickstart Config](#kickstart-config), but here are ones I personally use as well.
+I already mentioned the necessary ones in [Kickstart Config](#kickstart-config), but here are ones I personally use on top of them.
 ```lua
 ["core.norg.concealer"] = { config = { icon_preset = "diamond" } },
 ["core.norg.esupports.metagen"] = { config = { type = "auto", update_date = true } },
@@ -223,6 +223,7 @@ I already mentioned the necessary ones in [Kickstart Config](#kickstart-config),
 },
 ```
 
+
 ## Notes
 
 
@@ -237,14 +238,17 @@ This command opens `/path/to/workspace/index.norg` which is like the entry point
 
 Norg files inside a workspace can be linked with `{:$<name-of-workspace/path/to/file:}`.
 
-So for example, `~/Nextcloud/Notes/journal/2023-04-16.norg` would be `{:$Notes/journal/2023-04-16:}`.
-Or, the same workspace can be abbreviated to `$/`
+So for example, inside workspace `Notes = "~/Nextcloud/Notes`,
+`~/Nextcloud/Notes/journal/2023-04-16.norg` would be `{:$Notes/journal/2023-04-16:}`.
+Or, it can be abbreviated to `$/` when referring from files in the same workspace.
 
 
 ### `core.norg.journal`
 
 This adds commands `:Neorg journal {today,tomorrow,yesterday}`,
 which opens norg file with the appropriate date as name.
+
+Great for diary :)
 
 
 ### `core.keybinds`
@@ -293,3 +297,17 @@ If you use selfhosted Nextcloud, you can edit your `norg` notes from your phone.
 #### Notes
 
 - Might not work if you have [Text](https://github.com/nextcloud/text) app installed
+
+
+## Other Projects
+
+There are many other projects going on around the `norg` format.
+
+Find them [here](https://github.com/orgs/nvim-neorg/repositories) and contribute to any of them!
+
+
+## Discord
+
+More, alpha stage concepts are discussed in the Discord channel.
+
+Feel free to join: [https://discord.gg/T6EgTAX7ht](https://discord.gg/T6EgTAX7ht)
