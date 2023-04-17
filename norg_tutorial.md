@@ -108,6 +108,9 @@ With `---`, you can decrease the heading level. This text is inside [Heading 1](
     - Second level bullet is with `--` and not an indented `-`.
         - Third level
     - Second level
+- In insert mode, press `<M-CR>` to create a new bullet.
+    - Press `<C-t>`, `<C-d>` to increase, decrease the level.
+    - More info can be found [Wiki - Indent](https://github.com/nvim-neorg/neorg/wiki/Indent) or [Raw code](https://github.com/nvim-neorg/neorg/blob/main/lua/neorg/modules/core/keybinds/keybinds.lua).
 
 1. Numbered List: [Ordered Lists](1.0-specification.md#ordered-lists)
     1. It's `~`, not `1.` (Tho the conceal makes it look like that)

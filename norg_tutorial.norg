@@ -96,6 +96,9 @@ version: 1.0.0
   -- Second level bullet is with `--` and not an indented `-`.
   --- Third level
   -- Second level
+  - In insert mode, press `<M-CR>` to create a new bullet.
+  -- Press `<C-t>`, `<C-d>` to increase, decrease the level.
+  -- More info can be found {https://github.com/nvim-neorg/neorg/wiki/Indent}[Wiki - Indent] or {https://github.com/nvim-neorg/neorg/blob/main/lua/neorg/modules/core/keybinds/keybinds.lua}[Raw code].
 
   ~ Numbered List: {:1.0-specification:*** Ordered Lists}
   ~~ It's `~`, not `1.` (Tho the conceal makes it look like that)
