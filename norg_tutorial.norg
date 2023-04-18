@@ -4,7 +4,7 @@ description:
 authors: takuto
 categories:
 created: 2023-04-17
-updated: 2023-04-18
+updated: 2023-04-19
 version: 1.0.0
 @end
 
@@ -216,7 +216,7 @@ version: 1.0.0
     command `:Neorg workspace <name-of-workspace>`.
     This command opens `/path/to/workspace/index.norg` which is like the entry point file.
 
-    Norg files inside a workspace can be linked with `{:$<name-of-workspace/path/to/file:}`.
+    Norg files inside a workspace can be linked with `{:$<name-of-workspace>/path/to/file:}`.
 
     So for example, inside workspace `Notes = "~/Nextcloud/Notes`,
     `~/Nextcloud/Notes/journal/2023-04-16.norg` would be `{:$Notes/journal/2023-04-16:}`.
@@ -234,6 +234,11 @@ version: 1.0.0
 ** Your Own Module
    If you want to create your own plugin for neorg, this video is very useful.
    {https://www.youtube.com/watch?v=j4lTvIGRhmw&list=PLxpY86LRR3B0rtOBjXAsq1XnsOt4m4owu}[YouTube - Neorg Custom Modules]
+
+   Here's one external module I implemented. {https://github.com/pysan3/neorg-templates-draft}
+   which adds support for template files with the power of `LuaSnip`.
+
+   Feel free to explorer the code.
 
 * Tips
 

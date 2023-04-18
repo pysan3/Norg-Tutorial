@@ -242,7 +242,7 @@ You can define multiple workspaces at `config["core.norg.dirman"].config.workspa
 command `:Neorg workspace <name-of-workspace>`.
 This command opens `/path/to/workspace/index.norg` which is like the entry point file.
 
-Norg files inside a workspace can be linked with `{:$<name-of-workspace/path/to/file:}`.
+Norg files inside a workspace can be linked with `{:$<name-of-workspace>/path/to/file:}`.
 
 So for example, inside workspace `Notes = "~/Nextcloud/Notes`,
 `~/Nextcloud/Notes/journal/2023-04-16.norg` would be `{:$Notes/journal/2023-04-16:}`.
@@ -266,6 +266,11 @@ To register `norg` file specific keybinds, read this page: [Neorg - Wiki - User-
 
 If you want to create your own plugin for neorg, this video is very useful.
 [YouTube - Neorg Custom Modules](https://www.youtube.com/watch%3fv=j4lTvIGRhmw&list=PLxpY86LRR3B0rtOBjXAsq1XnsOt4m4owu)
+
+Here's one external module I implemented. [https://github.com/pysan3/neorg-templates-draft](https://github.com/pysan3/neorg-templates-draft)
+which adds support for template files with the power of `LuaSnip`.
+
+Feel free to explorer the code.
 
 
 # Tips
