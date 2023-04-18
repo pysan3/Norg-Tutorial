@@ -54,7 +54,15 @@ local plugins = {
   ["core.defaults"] = {},
   ["core.norg.completion"] = { config = { engine = "nvim-cmp", name = "[Norg]" } },
   ["core.integrations.nvim-cmp"] = {},
+  ["core.norg.concealer"] = { config = { icon_preset = "diamond" } },
   ["core.export"] = {},
+  ["core.keybinds"] = {
+    -- https://github.com/nvim-neorg/neorg/blob/main/lua/neorg/modules/core/keybinds/keybinds.lua
+    config = {
+      default_keybinds = true,
+      neorg_leader = "<Leader><Leader>",
+    },
+  },
 }
 M.opts = {
   load = plugins,
@@ -197,33 +205,28 @@ Keys passed to `config.load` are name of plugins. Their documents can be found i
 
 I already mentioned the necessary ones in [Kickstart Config](#kickstart-config), but here are ones I personally use on top of them.
 ```lua
-["core.norg.concealer"] = { config = { icon_preset = "diamond" } },
-["core.norg.esupports.metagen"] = { config = { type = "auto", update_date = true } },
-["core.norg.qol.toc"] = {},
-["core.norg.qol.todo_items"] = {},
-["core.looking-glass"] = {},
-["core.presenter"] = { config = { zen_mode = "zen-mode" } },
-["core.norg.journal"] = {
-  config = {
-    strategy = "flat",
-    workspace = "Notes",
+local plugins = {
+  ... -- ones mentioned in {** Kickstart Config}
+  ["core.norg.esupports.metagen"] = { config = { type = "auto", update_date = true } },
+  ["core.norg.qol.toc"] = {},
+  ["core.norg.qol.todo_items"] = {},
+  ["core.looking-glass"] = {},
+  ["core.presenter"] = { config = { zen_mode = "zen-mode" } },
+  ["core.norg.journal"] = {
+    config = {
+      strategy = "flat",
+      workspace = "Notes",
+    },
   },
-},
-["core.norg.dirman"] = {
-  config = {
-    workspaces = {
-      Notes = "~/Nextcloud/Notes",
-      Work = "~/Nextcloud/Work",
+  ["core.norg.dirman"] = {
+    config = {
+      workspaces = {
+        Notes = "~/Nextcloud/Notes",
+        Work = "~/Nextcloud/Work",
+      }
     }
-  }
-},
-["core.keybinds"] = {
-  -- https://github.com/nvim-neorg/neorg/blob/main/lua/neorg/modules/core/keybinds/keybinds.lua
-  config = {
-    default_keybinds = true,
-    neorg_leader = "<Leader><Leader>",
   },
-},
+}
 ```
 
 
