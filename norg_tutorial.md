@@ -52,9 +52,9 @@ local M = {
 }
 local plugins = {
   ["core.defaults"] = {},
-  ["core.norg.completion"] = { config = { engine = "nvim-cmp", name = "[Norg]" } },
+  ["core.completion"] = { config = { engine = "nvim-cmp", name = "[Norg]" } },
   ["core.integrations.nvim-cmp"] = {},
-  ["core.norg.concealer"] = { config = { icon_preset = "diamond" } },
+  ["core.concealer"] = { config = { icon_preset = "diamond" } },
   ["core.export"] = {},
   ["core.keybinds"] = {
     -- https://github.com/nvim-neorg/neorg/blob/main/lua/neorg/modules/core/keybinds/keybinds.lua
@@ -207,18 +207,18 @@ I already mentioned the necessary ones in [Kickstart Config](#kickstart-config),
 ```lua
 local plugins = {
   ... -- ones mentioned in {** Kickstart Config}
-  ["core.norg.esupports.metagen"] = { config = { type = "auto", update_date = true } },
-  ["core.norg.qol.toc"] = {},
-  ["core.norg.qol.todo_items"] = {},
+  ["core.esupports.metagen"] = { config = { type = "auto", update_date = true } },
+  ["core.qol.toc"] = {},
+  ["core.qol.todo_items"] = {},
   ["core.looking-glass"] = {},
   ["core.presenter"] = { config = { zen_mode = "zen-mode" } },
-  ["core.norg.journal"] = {
+  ["core.journal"] = {
     config = {
       strategy = "flat",
       workspace = "Notes",
     },
   },
-  ["core.norg.dirman"] = {
+  ["core.dirman"] = {
     config = {
       workspaces = {
         Notes = "~/Nextcloud/Notes",
@@ -234,11 +234,11 @@ local plugins = {
 
 
 
-### `core.norg.dirman`
+### `core.dirman`
 
 This plugin is very recommended. It manages what are called _workspaces_.
 
-You can define multiple workspaces at `config["core.norg.dirman"].config.workspaces`, and open with
+You can define multiple workspaces at `config["core.dirman"].config.workspaces`, and open with
 command `:Neorg workspace <name-of-workspace>`.
 This command opens `/path/to/workspace/index.norg` which is like the entry point file.
 
@@ -249,7 +249,7 @@ So for example, inside workspace `Notes = "~/Nextcloud/Notes`,
 Or, it can be abbreviated to `$/` when referring from files in the same workspace.
 
 
-### `core.norg.journal`
+### `core.journal`
 
 This adds commands `:Neorg journal {today,tomorrow,yesterday}`,
 which opens norg file with the appropriate date as name.
