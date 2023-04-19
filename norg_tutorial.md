@@ -9,7 +9,7 @@
 
 ## Useful Videos
 
-- [From No Org to Neorg - Playlist](https://www.youtube.com/watch%3fv=NnmRVY22Lq8&list=PLx2ksyallYzVI8CN1JMXhEf62j2AijeDa)
+- [From No Org to Neorg - Playlist](https://www.youtube.com/watch?v=NnmRVY22Lq8&list=PLx2ksyallYzVI8CN1JMXhEf62j2AijeDa)
     - [From No Org to Neorg - The Basics | #1](https://youtu.be/NnmRVY22Lq8)
     - [From No Org to Neorg - Workflow, Links | #2](https://youtu.be/Bi9JiW5nSig)
 
@@ -23,13 +23,13 @@ The current implementations of `norg` format is mostly done with the [Neorg](htt
 
 ## Installation Guide
 
-TL;DR. Read this section. [Installation / Quickstart](https://github.com/nvim-neorg/neorg/%23-installationquickstart)
+TL;DR. Read this section. [Installation / Quickstart](https://github.com/nvim-neorg/neorg/#-installationquickstart)
 
 - I'd recommend following the `Treesitter` section as well to install `tree-sitter-norg` spec.
     - `run = ":Neorg sync-parsers",`
 - **Mac Users**: ensure that the CC environment variable points to a compiler that has C++14 support.
     - Details written in github README.
-    - [Issue and How to solve](https://github.com/nvim-neorg/tree-sitter-norg/issues/7%23issuecomment-1291508121)
+    - [Issue and How to solve](https://github.com/nvim-neorg/tree-sitter-norg/issues/7#issuecomment-1291508121)
 
 
 ## Kickstart Config
@@ -140,7 +140,7 @@ You can also press `<Enter>` on all links to open the appropriate application.
 (e.g. urls are opened in the browser.)
 
 Again, `Vhyrro` does a great job explaining about links in his video,
-[From No Org to Neorg #2: 17:44~](https://youtu.be/Bi9JiW5nSig%3ft=17m44s) so go ahead and watch that video.
+[From No Org to Neorg #2: 17:44~](https://youtu.be/Bi9JiW5nSig?t=17m44s) so go ahead and watch that video.
 
 
 ## Links TL;DR
@@ -265,7 +265,7 @@ To register `norg` file specific keybinds, read this page: [Neorg - Wiki - User-
 ## Your Own Module
 
 If you want to create your own plugin for neorg, this video is very useful.
-[YouTube - Neorg Custom Modules](https://www.youtube.com/watch%3fv=j4lTvIGRhmw&list=PLxpY86LRR3B0rtOBjXAsq1XnsOt4m4owu)
+[YouTube - Neorg Custom Modules](https://www.youtube.com/watch?v=j4lTvIGRhmw&list=PLxpY86LRR3B0rtOBjXAsq1XnsOt4m4owu)
 
 Here's one external module I implemented. [https://github.com/pysan3/neorg-templates-draft](https://github.com/pysan3/neorg-templates-draft)
 which adds support for template files with the power of `LuaSnip`.
