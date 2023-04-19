@@ -7,7 +7,7 @@ git clone https://github.com/pysan3/Norg-Tutorial.git
 cd Norg-Tutorial/
 ```
 
-## Big Caution
+## 📣 Big Caution ‼️‼️
 
 **Neorg just announced v3.0.0**
 
