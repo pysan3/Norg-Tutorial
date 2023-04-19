@@ -7,6 +7,10 @@ git clone https://github.com/pysan3/Norg-Tutorial.git
 cd Norg-Tutorial/
 ```
 
+**Neorg Just announced v3.0.0, which breaks the kickstart config**
+
+**Please wait till I fix it**
+
 ## Before You Start
 
 I recommend installing these documents.
