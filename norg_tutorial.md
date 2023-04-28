@@ -70,6 +70,10 @@ M.opts = {
 return M
 ```
 
+If you still have problems setting up `neorg`, `@d-r-a-b` explains more thoroughly in
+[Understanding Neorg dependencies](https://gist.github.com/d-r-a-b/3af7083a018be15e6c1d1d2c5317e9c7).
+I'd really recommend this as well 😄
+
 
 # How to Write Your Notes
 
@@ -295,10 +299,10 @@ As a workaround, funny enough, you can prepend a link with `!` like `!{path}[nam
 which will be correctly converted to image tag when exported to markdown files.
 (Of course this only works with markdown and I hope this will not become the correct way.)
 ```norg
-!{https://user-images.githubusercontent.com/76052559/150838408-1a021d7b-1891-4cab-b16e-6b755e741e87.png}
+!{https://user-images.githubusercontent.com/76052559/150838408-1a021d7b-1891-4cab-b16e-6b755e741e87.png}[Norg format]
 ```
 Example:
-![https://user-images.githubusercontent.com/76052559/150838408-1a021d7b-1891-4cab-b16e-6b755e741e87.png](https://user-images.githubusercontent.com/76052559/150838408-1a021d7b-1891-4cab-b16e-6b755e741e87.png)
+![Norg format](https://user-images.githubusercontent.com/76052559/150838408-1a021d7b-1891-4cab-b16e-6b755e741e87.png)
 
 
 ## Sync with Git, Nextcloud, etc
