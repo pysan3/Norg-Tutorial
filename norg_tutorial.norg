@@ -4,7 +4,7 @@ description:
 authors: takuto
 categories:
 created: 2023-04-17
-updated: 2023-04-29
+updated: 2023-06-28
 version: 1.0.0
 @end
 
@@ -15,14 +15,15 @@ version: 1.0.0
    - {https://www.youtube.com/watch?v=NnmRVY22Lq8&list=PLx2ksyallYzVI8CN1JMXhEf62j2AijeDa}[From No Org to Neorg - Playlist]
    -- {https://youtu.be/NnmRVY22Lq8}[From No Org to Neorg - The Basics | #1]
    -- {https://youtu.be/Bi9JiW5nSig}[From No Org to Neorg - Workflow, Links | #2]
+   -- ...
 
-   I highly recommend you watch these videos by `Vhyrro`, the author of {https://github.com/nvim-neorg/neorg/}[Neorg] plugin.
+   I highly recommend you watch these videos by `Vhyrro`, the main contributor of {https://github.com/nvim-neorg/neorg/}[Neorg] plugin.
 
 * How to Get Started
   The current implementations of `norg` format is mostly done with the {https://github.com/nvim-neorg/neorg/}[Neorg] plugin.
 
 ** Installation Guide
-   TL;DR. Read this section. {https://github.com/nvim-neorg/neorg/#-installationquickstart}[Installation / Quickstart]
+   Read this section. {https://github.com/nvim-neorg/neorg/#-installationquickstart}[Installation / Quickstart]
 
    - I'd recommend following the `Treesitter` section as well to install `tree-sitter-norg` spec.
    -- `run = ":Neorg sync-parsers",`
@@ -72,7 +73,6 @@ version: 1.0.0
    I'd really recommend this as well 😄
 
 * How to Write Your Notes
-
 ** Basics of Plugins
    There is a config option `config.load = {}` to define plugins you want to use.
 
@@ -137,7 +137,7 @@ version: 1.0.0
    -- URL with name: {https://github.com/nvim-neorg/neorg/}[Neorg GitHub]
    - Norg files
    -- Relative to current file: `{:foo/bar:}` -> `foo/bar.norg`
-   -- Absolute path: `{:/tmp/foo/bar:}` -> `/tmp/foo/bar.norg`. (Also works with `~` = `$HOME`)
+   -- Absolute path: `{:/tmp/foo/bar:}` -> `/tmp/foo/bar.norg`. (Also works with `~/` = `$HOME/`)
    -- Relative to current workspace: `{:$/foo/bar:}` -> `~/Norg/Notes/foo/bar.norg`
    -- Relative to different workspace: `{:$work/foo/bar:}` -> `~/Norg/work/foo/bar.norg`
    - Usual files: `{/ /path/to/file}`
@@ -212,7 +212,6 @@ version: 1.0.0
   @end
 
 ** Notes
-
 *** `core.dirman`
     This plugin is very recommended. It manages what are called /workspaces/.
 
@@ -222,7 +221,7 @@ version: 1.0.0
 
     Norg files inside a workspace can be linked with `{:$<name-of-workspace>/path/to/file:}`.
 
-    So for example, inside workspace `Notes = "~/Nextcloud/Notes`,
+    So for example, inside workspace `Notes = "~/Nextcloud/Notes"`,
     `~/Nextcloud/Notes/journal/2023-04-16.norg` would be `{:$Notes/journal/2023-04-16:}`.
     Or, it can be abbreviated to `$/` when referring from files in the same workspace.
 
@@ -245,7 +244,6 @@ version: 1.0.0
    Feel free to explorer the code.
 
 * Tips
-
 ** Embed Images
    As far as I know, there are *NO* specifications about how to embed / link to an image.
 
