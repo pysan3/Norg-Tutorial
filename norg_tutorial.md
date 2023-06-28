@@ -12,8 +12,9 @@
 - [From No Org to Neorg - Playlist](https://www.youtube.com/watch?v=NnmRVY22Lq8&list=PLx2ksyallYzVI8CN1JMXhEf62j2AijeDa)
     - [From No Org to Neorg - The Basics | #1](https://youtu.be/NnmRVY22Lq8)
     - [From No Org to Neorg - Workflow, Links | #2](https://youtu.be/Bi9JiW5nSig)
+    - ...
 
-I highly recommend you watch these videos by `Vhyrro`, the author of [Neorg](https://github.com/nvim-neorg/neorg/) plugin.
+I highly recommend you watch these videos by `Vhyrro`, the main contributor of [Neorg](https://github.com/nvim-neorg/neorg/) plugin.
 
 
 # How to Get Started
@@ -23,7 +24,7 @@ The current implementations of `norg` format is mostly done with the [Neorg](htt
 
 ## Installation Guide
 
-TL;DR. Read this section. [Installation / Quickstart](https://github.com/nvim-neorg/neorg/#-installationquickstart)
+Read this section. [Installation / Quickstart](https://github.com/nvim-neorg/neorg/#-installationquickstart)
 
 - I'd recommend following the `Treesitter` section as well to install `tree-sitter-norg` spec.
     - `run = ":Neorg sync-parsers",`
@@ -76,8 +77,6 @@ I'd really recommend this as well 😄
 
 
 # How to Write Your Notes
-
-
 
 ## Basics of Plugins
 
@@ -153,7 +152,7 @@ Again, `Vhyrro` does a great job explaining about links in his video,
     - URL with name: [Neorg GitHub](https://github.com/nvim-neorg/neorg/)
 - Norg files
     - Relative to current file: `{:foo/bar:}` -> `foo/bar.norg`
-    - Absolute path: `{:/tmp/foo/bar:}` -> `/tmp/foo/bar.norg`. (Also works with `~` = `$HOME`)
+    - Absolute path: `{:/tmp/foo/bar:}` -> `/tmp/foo/bar.norg`. (Also works with `~/` = `$HOME/`)
     - Relative to current workspace: `{:$/foo/bar:}` -> `~/Norg/Notes/foo/bar.norg`
     - Relative to different workspace: `{:$work/foo/bar:}` -> `~/Norg/work/foo/bar.norg`
 - Usual files: `{/ /path/to/file}`
@@ -236,8 +235,6 @@ local plugins = {
 
 ## Notes
 
-
-
 ### `core.dirman`
 
 This plugin is very recommended. It manages what are called _workspaces_.
@@ -248,7 +245,7 @@ This command opens `/path/to/workspace/index.norg` which is like the entry point
 
 Norg files inside a workspace can be linked with `{:$<name-of-workspace>/path/to/file:}`.
 
-So for example, inside workspace `Notes = "~/Nextcloud/Notes`,
+So for example, inside workspace `Notes = "~/Nextcloud/Notes"`,
 `~/Nextcloud/Notes/journal/2023-04-16.norg` would be `{:$Notes/journal/2023-04-16:}`.
 Or, it can be abbreviated to `$/` when referring from files in the same workspace.
 
@@ -277,9 +274,37 @@ which adds support for template files with the power of `LuaSnip`.
 Feel free to explorer the code.
 
 
+# Explore More Norg
+
+## [Awesome Neorg](https://github.com/NTBBloodbath/awesome-neorg)
+
+> A collection of awesome Neorg notes, software and resources.
+
+- You might find more useful neorg external modules to integrate to your workflow.
+
+
+## [Other Official Projects](https://github.com/orgs/nvim-neorg/repositories)
+
+There are many other projects going on around the `norg` format.
+
+
+## GitHub Tags
+
+Of course you can search through GitHub with tags.
+- `norg`: [https://github.com/topics/norg](https://github.com/topics/norg)
+    - More likely to find external modules.
+- `neorg` [https://github.com/topics/neorg](https://github.com/topics/neorg)
+    - More likely to find personal dotfiles and other configs.
+
+
+## Discord
+
+More, alpha stage concepts are discussed in the Discord channel.
+
+Feel free to join: [https://discord.gg/T6EgTAX7ht](https://discord.gg/T6EgTAX7ht)
+
+
 # Tips
-
-
 
 ## Embed Images
 
@@ -336,17 +361,3 @@ If you use selfhosted Nextcloud, you can edit your `norg` notes from your phone.
 #### Notes
 
 - Might not work if you have [Text](https://github.com/nextcloud/text) app installed
-
-
-## Other Projects
-
-There are many other projects going on around the `norg` format.
-
-Find them [here](https://github.com/orgs/nvim-neorg/repositories) and contribute to any of them!
-
-
-## Discord
-
-More, alpha stage concepts are discussed in the Discord channel.
-
-Feel free to join: [https://discord.gg/T6EgTAX7ht](https://discord.gg/T6EgTAX7ht)

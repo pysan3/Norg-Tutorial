@@ -7,9 +7,10 @@ git clone https://github.com/pysan3/Norg-Tutorial.git
 cd Norg-Tutorial/
 ```
 
-## 📣 Big Caution ‼️‼️
+I'd suggest reading `norg_tutorial.md` first to do the installation and then clone the repo locally
+to read `norg_tutorial.norg` in your neovim with the neorg plugin :)
 
-**Neorg just announced v3.0.0**
+## 📣 Big Caution ‼️‼️
 
 **The kickstart config is only compatible with v3.0.0+**
 

@@ -243,6 +243,27 @@ version: 1.0.0
 
    Feel free to explorer the code.
 
+* Explore More Norg
+** {https://github.com/NTBBloodbath/awesome-neorg}[Awesome Neorg]
+   > A collection of awesome Neorg notes, software and resources.
+
+   - You might find more useful neorg external modules to integrate to your workflow.
+
+** {https://github.com/orgs/nvim-neorg/repositories}[Other Official Projects]
+   There are many other projects going on around the `norg` format.
+
+** GitHub Tags
+   Of course you can search through GitHub with tags.
+   - `norg`: {https://github.com/topics/norg}
+   -- More likely to find external modules.
+   - `neorg` {https://github.com/topics/neorg}
+   -- More likely to find personal dotfiles and other configs.
+
+** Discord
+   More, alpha stage concepts are discussed in the Discord channel.
+
+   Feel free to join: {https://discord.gg/T6EgTAX7ht}
+
 * Tips
 ** Embed Images
    As far as I know, there are *NO* specifications about how to embed / link to an image.
@@ -285,13 +306,3 @@ version: 1.0.0
 
 **** Notes
      - Might not work if you have {https://github.com/nextcloud/text}[Text] app installed
-
-** Other Projects
-   There are many other projects going on around the `norg` format.
-
-   Find them {https://github.com/orgs/nvim-neorg/repositories}[here] and contribute to any of them!
-
-** Discord
-   More, alpha stage concepts are discussed in the Discord channel.
-
-   Feel free to join: {https://discord.gg/T6EgTAX7ht}
