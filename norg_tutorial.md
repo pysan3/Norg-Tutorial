@@ -308,16 +308,27 @@ Feel free to join: [https://discord.gg/T6EgTAX7ht](https://discord.gg/T6EgTAX7ht
 
 ## Embed Images
 
-As far as I know, there are **NO** specifications about how to embed / link to an image.
+~~As far as I know, there are **NO** specifications about how to embed / link to an image.~~
+
+Update: 2023-10-19.
+- Spec for image added: [https://github.com/nvim-neorg/norg-specs/issues/14](https://github.com/nvim-neorg/norg-specs/issues/14).
+```norg
+.image /path/to/image.png
+```
+
+- There are also some attempts to add image preview support thanks to [image.nvim](https://github.com/3rd/image.nvim).
+    - [https://github.com/nvim-neorg/neorg/issues/971](https://github.com/nvim-neorg/neorg/issues/971)
+- Markdown export and treesitter parsing is not yet _fully_ implemented,
+  so I'd suggest using the old workaround described below for now.
 
 
-### Discussions
+### OLD: Discussions
 
 - [Is there any way to insert a image just like kitty icat does #768](https://github.com/nvim-neorg/neorg/discussions/768)
 - [render.nvim #791](https://github.com/nvim-neorg/neorg/discussions/791)
 
 
-### Workaround
+### OLD: Workaround
 
 
 As a workaround, funny enough, you can prepend a link with `!` like `!{path}[name]` to link to an image,
