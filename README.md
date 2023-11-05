@@ -10,8 +10,6 @@ cd Norg-Tutorial/
 I'd suggest reading `norg_tutorial.md` first to do the installation and then clone the repo locally
 to read `norg_tutorial.norg` in your neovim with the neorg plugin :)
 
-## 📣 Big Caution ‼️‼️
-
 **The kickstart config is only compatible with v3.0.0+**
 
 Update the plugin if it is on an old version.

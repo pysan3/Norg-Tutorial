@@ -1,11 +1,11 @@
 @document.meta
-title: norg tutorial
+title: norg_tutorial
 description:
 authors: takuto
 categories:
-created: 2023-04-17
-updated: 2023-10-19T01:32:17+0900
-version: 1.0.0
+created: 2023-11-05T15:01:09+0900
+updated: 2023-11-05T15:01:09+0900
+version: 1.1.1
 @end
 
 * Norg Tutorial
@@ -18,6 +18,7 @@ version: 1.0.0
    -- ...
 
    I highly recommend you watch these videos by `Vhyrro`, the main contributor of {https://github.com/nvim-neorg/neorg/}[Neorg] plugin.
+   He says he'll start a devlog series soon as well.
 
 * How to Get Started
   The current implementations of `norg` format is mostly done with the {https://github.com/nvim-neorg/neorg/}[Neorg] plugin.
@@ -53,13 +54,20 @@ version: 1.0.0
      ["core.completion"] = { config = { engine = "nvim-cmp", name = "[Norg]" } },
      ["core.integrations.nvim-cmp"] = {},
      ["core.concealer"] = { config = { icon_preset = "diamond" } },
-     ["core.export"] = {},
      ["core.keybinds"] = {
        -- https://github.com/nvim-neorg/neorg/blob/main/lua/neorg/modules/core/keybinds/keybinds.lua
        config = {
          default_keybinds = true,
          neorg_leader = "<Leader><Leader>",
        },
+     },
+     ["core.dirman"] = {
+       config = {
+         workspaces = {
+           Notes = "~/Nextcloud/Notes",
+           Work = "~/Nextcloud/Work",
+         }
+       }
      },
    }
    M.opts = {
@@ -71,6 +79,18 @@ version: 1.0.0
    If you still have problems setting up `neorg`, `@d-r-a-b` explains more thoroughly in
    {https://gist.github.com/d-r-a-b/3af7083a018be15e6c1d1d2c5317e9c7}[Understanding Neorg dependencies].
    I'd really recommend this as well 😄
+
+*** `core.dirman`
+    This plugin manages what are called /workspaces/.
+
+    You can define multiple workspaces at `config["core.dirman"].config.workspaces`, and open with
+    command `:Neorg workspace <name-of-workspace>`.
+    This command opens `/path/to/workspace/index.norg` which is like the entry point file.
+
+    Norg files inside a workspace can be linked with `{:$<name-of-workspace>/path/to/file:}`.
+    So for example, inside workspace `Notes = "~/Nextcloud/Notes"`,
+    `~/Nextcloud/Notes/journal/2023-04-16.norg` would be `{:$Notes/journal/2023-04-16:}`.
+    Or, it can be abbreviated to `$/` when referring from files in the same workspace. More info in {* Links} section.
 
 * How to Write Your Notes
 ** Basics of Plugins
@@ -86,7 +106,9 @@ version: 1.0.0
 
    Run `:Neorg toggle-concealer` to see the raw text.
 
-* Heading 1: {:1.0-specification:** Structural Detached Modifiers}
+* Heading 1
+  - Spec: {:1.0-specification:** Structural Detached Modifiers}
+
   Normal text here.
   Single new line will be ignored.
 
@@ -104,7 +126,8 @@ version: 1.0.0
 
   With `---`, you can decrease the heading level. This text is inside {* Heading 1} again.
 
-  - Bullet List: {:1.0-specification:*** Unordered Lists}
+  - Bullet List
+  -- Spec: {:1.0-specification:*** Unordered Lists}
   -- Second level bullet is with `--` and not an indented `-`.
   --- Third level
   -- Second level
@@ -112,19 +135,22 @@ version: 1.0.0
   -- Press `<C-t>`, `<C-d>` to increase, decrease the level.
   -- More info can be found {https://github.com/nvim-neorg/neorg/wiki/Indent}[Wiki - Indent] or {https://github.com/nvim-neorg/neorg/blob/main/lua/neorg/modules/core/keybinds/keybinds.lua}[Raw code].
 
-  ~ Numbered List: {:1.0-specification:*** Ordered Lists}
+  ~ Numbered List
+  ~~ Spec: {:1.0-specification:*** Ordered Lists}
   ~~ It's `~`, not `1.` (Tho the conceal makes it look like that)
-  -- Can be mixed with bullets as well.
+  -- Can be mixed with bullets as well (not in markdown tho).
   ~ Second
 
-  {:1.0-specification:*** Quotes}
   > Quotes
+  >> Spec: {:1.0-specification:*** Quotes}
   >> Quote level 2
 
   - You can use {:1.0-specification:*** TODO Status Extension}[TODO lists] in combination with these lists.
   -- I highly suggest reading this section as well.
 
-* Links: {:1.0-specification:** Link Location}
+* Links
+  - Spec: {:1.0-specification:** Link Location}
+
   There are so so many types of useful links in `norg`.
   You can also press `<Enter>` on all links to open the appropriate application.
   (e.g. urls are opened in the browser.)
@@ -132,7 +158,7 @@ version: 1.0.0
   Again, `Vhyrro` does a great job explaining about links in his video,
   {https://youtu.be/Bi9JiW5nSig?t=17m44s}[From No Org to Neorg #2: 17:44~] so go ahead and watch that video.
 
-** Links TL;DR
+** Links Examples
    - URL: `{https://xxx.example.com}`
    -- URL with name: {https://github.com/nvim-neorg/neorg/}[Neorg GitHub]
    - Norg files
@@ -161,26 +187,6 @@ version: 1.0.0
   - \$inline math\$: $f(x) = y$ (verbatim)
   - \&variable\&: &variable& (verbatim)
 
-** Export
-   You can convert your `norg` notes to different formats.
-
-   `:Neorg export to-file foo.md` -> Exports to `foo.md` in markdown format.
-
-   This is a function to export to `suffix` with the same dir and name of current file.
-   @code lua
-   local export_file = function(suffix, open_preview)
-     local dst = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.:r") .. suffix -- same name but with suffix
-     vim.cmd(string.format([[Neorg export to-file %s]], string.gsub(dst, " ", [[\ ]])))
-     vim.schedule(function()
-       vim.cmd.edit(dst)
-       if suffix == ".md" and open_preview then
-         vim.cmd([[MarkdownPreview]]) -- https://github.com/iamcco/markdown-preview.nvim
-       end
-     end)
-   end
-   -- export_file(".md", true)
-   @end
-
 * Plugins
   Keys passed to `config.load` are name of plugins. Their documents can be found in
   {https://github.com/nvim-neorg/neorg/wiki}[Neorg - Wiki] -> Pages.
@@ -194,51 +200,316 @@ version: 1.0.0
     ["core.qol.todo_items"] = {},
     ["core.looking-glass"] = {},
     ["core.presenter"] = { config = { zen_mode = "zen-mode" } },
+    ["core.export"] = {},
+    ["core.export.markdown"] = { config = { extensions = "all" } },
+    ["core.summary"] = {},
+    ["core.ui.calendar"] = {},
     ["core.journal"] = {
       config = {
         strategy = "flat",
         workspace = "Notes",
       },
     },
-    ["core.dirman"] = {
-      config = {
-        workspaces = {
-          Notes = "~/Nextcloud/Notes",
-          Work = "~/Nextcloud/Work",
-        }
-      }
-    },
   }
   @end
 
-** Notes
-*** `core.dirman`
-    This plugin is very recommended. It manages what are called /workspaces/.
-
-    You can define multiple workspaces at `config["core.dirman"].config.workspaces`, and open with
-    command `:Neorg workspace <name-of-workspace>`.
-    This command opens `/path/to/workspace/index.norg` which is like the entry point file.
-
-    Norg files inside a workspace can be linked with `{:$<name-of-workspace>/path/to/file:}`.
-
-    So for example, inside workspace `Notes = "~/Nextcloud/Notes"`,
-    `~/Nextcloud/Notes/journal/2023-04-16.norg` would be `{:$Notes/journal/2023-04-16:}`.
-    Or, it can be abbreviated to `$/` when referring from files in the same workspace.
-
+** Notes for Important Plugin
 *** `core.journal`
+    - {https://github.com/nvim-neorg/neorg/wiki/Journal}
+
     This adds commands `:Neorg journal {today,tomorrow,yesterday}`,
     which opens norg file with the appropriate date as name.
+    Also, take a look at {https://github.com/nvim-neorg/neorg/wiki/Calendar}[`core.ui.calendar`]
+    to add `:Neorg journal custom` command to choose a date with a calendar UI.
 
     Great for diary :)
 
 *** `core.keybinds`
-    To register `norg` file specific keybinds, read this page: {https://github.com/nvim-neorg/neorg/wiki/User-Keybinds}[Neorg - Wiki - User-Keybinds].
+    - {https://github.com/nvim-neorg/neorg/wiki/User-Keybinds}
+
+    To register `norg` file specific keybinds, read this section:
+    {https://github.com/nvim-neorg/neorg/wiki/User-Keybinds#setting-up-a-keybind-hook}[Neorg - Wiki - User-Keybinds - Setting Up a Keybind Hook].
+
+    The default keybinds are listed {https://github.com/nvim-neorg/neorg/blob/main/lua/neorg/modules/core/keybinds/keybinds.lua}[here].
+
+*** `core.export`
+    - {https://github.com/nvim-neorg/neorg/wiki/Exporting-Files}
+
+    You will want {https://github.com/nvim-neorg/neorg/wiki/Markdown-Export}[`core.export.markdown`] as well
+    to export your files to markdown format.
+
+    Read {** Import / Export} section for instructions for other filetypes in detail.
+
+*** `core.summary`
+    - {https://github.com/nvim-neorg/neorg/wiki/Summary}
+
+    Use `:Neorg generate-workspace-summary` to generate a summary of the entire
+    workspace with links to each respective entry.
+
+    It seems that it has some bugs that are being worked on.
+    - {https://github.com/nvim-neorg/neorg/issues/1108}
+    - {https://github.com/nvim-neorg/neorg/issues/1071}
+
+*** `core.looking-glass`
+    - {https://github.com/nvim-neorg/neorg/wiki/Looking-Glass}
+
+    > The looking glass module provides a simple way to edit code blocks in an
+    > external buffer, which allows LSPs and other language-specific tools to
+    > kick in.
+
+    > The magnify command can be accessed by running `:Neorg keybind all
+    > core.looking-glass.magnify-code-block` with your cursor underneath the
+    > code block you would like to magnify - it is not bound to any key as of
+    > currently, but you may map it yourself via the core.keybinds module.
+
+    !{https://user-images.githubusercontent.com/76052559/216782314-5d82907f-ea6c-44f9-9bd8-1675f1849358.gif}[looking-glass]
+
+** Export / Import
+   You can convert your `norg` notes from / to different formats.
+   You've got mainly three options to export and one to import.
+   For exporting, I find {*** Export: `norg-pandoc`} the most stable at the moment (2023-11-05)
+   but {*** Export: `norganic + pandoc + Norg.jl`} works pretty well as well.
+
+*** Builtin Export Module
+    `:Neorg export to-file foo.md` -> Exports to `foo.md` in markdown format.
+
+    This only supports markdown and the conversion is not very reliable.
+    However, you can use this as a neovim command, so it's the easiest among others.
+
+    This is a function to export to `suffix` with the same dir and name of current file.
+    @code lua
+    local export_file = function(suffix, open_preview)
+      local dst = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.:r") .. suffix -- same name but with suffix
+      vim.cmd(string.format([[Neorg export to-file %s]], string.gsub(dst, " ", [[\ ]])))
+      vim.schedule(function()
+        vim.cmd.edit(dst)
+        if suffix == ".md" and open_preview then
+          vim.cmd([[MarkdownPreview]]) -- https://github.com/iamcco/markdown-preview.nvim
+        end
+      end)
+    end
+    -- export_file(".md", true)
+    @end
+
+*** Export: `norganic + pandoc + Norg.jl`
+    {https://github.com/Klafyvel/Norg.jl/}[`Norg.jl`] is a project to parse norg format file written in lua.
+    {https://github.com/klafyvel/norganic}[`norganic`] is a frontend of `Norg.jl` to use the tool from command line.
+
+    For installation document, please read norganic's {https://github.com/klafyvel/norganic}[README].
+
+    - Example usage:
+    -- Convert norg file to html file.
+    @code bash
+    $ norganic html --input /path/to/file.norg --output /path/to/file.html
+    @end
+    -- Convert norg file to arbitrary file using `pandoc`.
+    --- norganic can output specific json format that pandoc understands and can convert to any format of file.
+    --- Note that things might not work here and there.
+    @code bash
+    $ norganic json --input /path/to/file.norg | pandoc -f json -t <file type you want> /path/to/output.xxx
+    @end
+
+*** Export: `norg-pandoc`
+    {https://github.com/boltlessengineer/norg-pandoc}[`norg-pandoc`] is a plugin for pandoc to parse norg format written in lua.
+    A parser in directly added to pandoc, but you have to git clone and run pandoc inside `norg-pandoc`'s directory
+    (or add this dir to lua's runtime path I guess?), so it is kinda cumbersome to run.
+    @code bash
+    $ git clone https://github.com/boltlessengineer/norg-pandoc.git
+    $ cd norg-pandoc
+    $ pandoc -f init.lua -t gfm /path/to/file.norg -o /path/to/output.md
+    # gfm (GitHub flavored markdown)
+    @end
+
+    {/ ./norg_tutorial.md} is generated using this tool at the moment.
+
+*** Import: `pandoc + minorg`
+    {https://github.com/pysan3/minorg}[`minorg`] is a tool to convert pandoc json format to norg file.
+    Theoretically, it should be able to convert from all file formats that pandoc supports (and it's extensions).
+
+    Please install the tool via {https://github.com/pysan3/minorg/releases}[minorg - Releases]
+
+    - Example usage:
+    -- Convert from markdown.
+    @code bash
+    $ pandoc -f markdown -t json /path/to/input/file.md | minorg generate -o /path/to/output.norg
+    @end
+    -- Convert Obsidian files.
+    --- Obsidian markdown flavor is a bit out of the standards and pandoc fails to parse it correctly.
+    --- I've implemented some workarounds specifically for obsidian style markdowns.
+    @code bash
+    $ pandoc -f markdown -f json /path/to/obsidian/file.md | minorg generate -o /path/to/output.norg --isObsidian --workRootDir=/path/to/workspace
+    @end
+    - For more usage examples (for example convert whole dir recursively), please read the {https://github.com/pysan3/minorg}[README].
+    - BTW, I'm the author of this cli tool, so if you have any problem, don't hesitate to send me an issue or feature request.
+
+*** Future: tree-sitter v3 parser
+    The tree-sitter parser for norg format version 3 is being worked at the moment.
+    I've not been able to follow the development closely but I heard that it might work if you compile locally at the moment (2023-11-06).
+
+    After this parser is complete, we should be able to write a working importer / exporter with the output of the parser
+    to plug into pandoc to have a reliable result.
+
+** Image Support
+   Image support in norg file is partially done, partially not.
+
+   The syntax is like below and the second format is currently discussed for inline images.
+   |example
+   %preferred image syntax, image.nvim supports this out of the box%
+   .image /path/to/image.png
+
+   %inline image syntax being discussed. No real implementation or parser supports this yet%
+   {url}[alt text](image)
+   {/ /path/to/img.png}[alt text](image)
+   |end
+
+   Parser or especially the {*** Builtin Export Module} does not fully support this.
+   Read {** Embed Images} if you want a workaround to have a working markdown export now.
+
+*** Visualization
+    {https://github.com/3rd/image.nvim}[`image.nvim`] is an awesome plugin that can inject the images inside the neovim buffer
+    if you use /kitty-graphics-protocol/ compatible terminal.
+
+    {https://github.com/nvim-neorg/neorg/issues/971#issuecomment-1620775558}[Working example GIF].
+
+** Table Syntax
+   The table syntax is one of the most powerfull, but really tricky thing in norg's specification.
+   I will try my best to explain.
+
+   There are two syntax to define a table, one easy but limited and one that is very extensible.
+
+*** Markdown Wrapper
+    This format is very easy. It is basically the same as markdown table format wrapped in `@table - @end`.
+
+    One pro is that it should work with some markdown exporter at the momemt.
+    |example
+    @table
+    | Head a | Head b | Head c |
+    | -      | -      | -      |
+    | Cell 1 | Cell 2 | Cell 3 |
+    | Cell 4 | Cell 5 | Cell 6 |
+    @end
+    |end
+
+*** Rich Table Format
+    This table format has infinite size table and you can specify the cell positions with movement (relative) commands.
+
+    Here are the three ways to write a cell. It consists of `: <movement> : cell content`.
+    |example
+    %basic format%
+    : .
+      cell content
+    %shorthand syntax when content fits in single line%
+    : . : cell content
+    %multi line content syntax. you also need the closing :: below%
+    :: .
+      - cell
+      - content
+    ::
+    |end
+
+    Now let's talk about the movements. These should go into the `.` part in the above example.
+    In this example, `A1` means first row, first column, `C2` means *second row (2)*, *third column (C)*.
+    Look at `MS Excel` for more visual explanation.
+    - `.`: Top left (A1) of the table.
+    - `>` / `<`: Go one left / right.
+    -- You can prefix number to move multiple times. `3>` moves three right.
+    - `^` / `v`: Go one up / down. Also combine with numbers.
+    - `_`: Move to leftmost column on the next row. (If on `D1` and `_` will go to `A2`)
+    - `/`: Like `_` but vertically. Move one right and to the top. Imagine an upper-right arrow (↗️).
+
+    One special case is that when you go `<` on `A?` (left most column), it will wrap around and go to
+    the cell one row above and all the way to the right (that has content). (`A2` -> `<` -> `X1`)
+
+    Another option other than relative movement is to specify absolute cell position.
+    - `: A1 : cell content`: Position `A1`.
+    - `: B1 : second cell`: Obviously cell next to `A1`.
+    - `: A1-A4 : multi row cell`: You can specify a multi row / column cell with this format.
+    Norg also has the concept of `&variable&` which holds some value, controllable with {# macros}
+
+**** Alignments
+     You can align the cell content with `+align right` above the cell row.
+     Note that these are still *very work in progress* and neither the exporter nor the parser understand it,
+     and /might even change in the future/.
+     Other variances are...
+     - `+align left`: align a single cell
+     - `#align center`: align all cells to the center after this line
+     - `#align.columns A right`: align all cells in `A` column
+
+*** Table Format Examples
+    Let's wrap our heads around with some examples. The following tables represent the same thing.
+
+    |example
+    @table
+    | Head a    |    Head b |   Head c  |
+    | --------- | --------- | --------- |
+    | multi     | multi col cell        |
+    | row       | --------- | --------- |
+    | cell      |    Cell 5 |    Cell 6 |
+    | --------- | --------- | --------- |
+    @end
+
+    #align left
+    : . : Head a
+    +align right
+    : > : Head b
+    +align center
+    : > : Head c
+    : A2-A3 : multi row cell
+    : B2-C2 : multi col cell
+    #align right
+    : _> : Cell 5
+    : > : Cell 6
+    |end
+
+    The following mimics table in {*** Markdown Wrapper}.
+    Although you can totally express this table with only `. > _`, I purposely used different notations as well.
+    BTW, there are no ways to express `<th>` cells at the moment. The format is being discussed at {** Discord} right now (2023-11-06).
+    |example
+    : . : Head a
+    : B1 : Head b
+    : C1
+      Head c
+    : _ : Cell 1
+    : 5>4<
+      Cell 2
+    :: >
+      Cell 3
+    ::
+    : >>>_ : Cell 4
+    : /2v : Cell 5
+    : _2>^ : Cell 6
+    |end
+
+** Macros
+   Macros in norg format starts with one of (`#`, `@`, `.`, `|`) and can invoke a function written in
+   {https://janet-lang.org/}[Janet Langauge].
+   You've already seen this with `#align`, `@table`, `.image`, `|example` and so on.
+   The spec hasn't matured yet but we are working on it steadily.
+   We will see things like `+color:red` and many more interesting ones that connects to database soon -I mean pretty in long term...-.
+
+*** Attached Modifier Extensions (WIP)
+    Macros or labels attached on attached modifiers.
+
+    Best example is the below where `(code:norg)` extends the inline code block (backticks).
+    |example
+    - `* Heading`(code:norg)
+    |end
+
+*** Detached Modifier Extensions (WIP)
+    Kind of like a tag attached to headings, bullet points and some other stuffs.
+
+    Best example is the todo items where `- (x) item` means that this bullet point has attribute /TODO item/ and /IS DONE/.
+    These modifiers can be chained together with a pipe (`|`).
+    Below example means a heading that is /TODO item/ and /PENDING/ and /PRIORITY A (A is highest)/.
+    |example
+    * (-|# A) Heading 1
+    |end
 
 ** Your Own Module
    If you want to create your own plugin for neorg, this video is very useful.
    {https://www.youtube.com/watch?v=j4lTvIGRhmw&list=PLxpY86LRR3B0rtOBjXAsq1XnsOt4m4owu}[YouTube - Neorg Custom Modules]
 
-   Here's one external module I implemented. {https://github.com/pysan3/neorg-templates-draft}
+   Here's one external module I implemented: {https://github.com/pysan3/neorg-templates}[neorg-templates],
    which adds support for template files with the power of `LuaSnip`.
 
    Feel free to explorer the code.
@@ -266,13 +537,14 @@ version: 1.0.0
 
 * Tips
 ** Embed Images
+   *This section is old.* Read {** Image Support} for new information.
    -As far as I know, there are *NO* specifications about how to embed / link to an image.-
 
    Update: 2023-10-19.
    - Spec for image added: {https://github.com/nvim-neorg/norg-specs/issues/14}.
-   @code norg
+   |example
    .image /path/to/image.png
-   @end
+   |end
 
    - There are also some attempts to add image preview support thanks to {https://github.com/3rd/image.nvim}[image.nvim].
    -- {https://github.com/nvim-neorg/neorg/issues/971}
@@ -289,9 +561,9 @@ version: 1.0.0
     As a workaround, funny enough, you can prepend a link with `!` like `!{path}[name]` to link to an image,
     which will be correctly converted to image tag when exported to markdown files.
     (Of course this only works with markdown and I hope this will not become the correct way.)
-    @code norg
+  |example
     !{https://user-images.githubusercontent.com/76052559/150838408-1a021d7b-1891-4cab-b16e-6b755e741e87.png}[Norg format]
-    @end
+  |end
     Example:
     !{https://user-images.githubusercontent.com/76052559/150838408-1a021d7b-1891-4cab-b16e-6b755e741e87.png}[Norg format]
 
