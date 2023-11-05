@@ -573,8 +573,10 @@ Here are the three ways to write a cell. It consists of
 %basic format%
 : .
   cell content
+
 %shorthand syntax when content fits in single line%
 : . : cell content
+
 %multi line content syntax. you also need the closing :: below%
 :: .
   - cell

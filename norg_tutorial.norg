@@ -399,8 +399,10 @@ version: 1.1.1
     %basic format%
     : .
       cell content
+
     %shorthand syntax when content fits in single line%
     : . : cell content
+
     %multi line content syntax. you also need the closing :: below%
     :: .
       - cell
