@@ -536,7 +536,10 @@ GIF](https://github.com/nvim-neorg/neorg/issues/971#issuecomment-1620775558).
 ## Table Syntax
 
 The table syntax is one of the most powerfull, but really tricky thing
-in norg's specification. I will try my best to explain.
+in norg's specification. I will try my best to explain. Even if it's
+hard to comprehend, skim through til the [Table Format
+Examples](#table-format-examples) section and you might get the hang of
+it.
 
 There are two syntax to define a table, one easy but limited and one
 that is very extensible.
@@ -611,8 +614,7 @@ position.
 - `: B1 : second cell`: Obviously cell next to `A1`.
 
 - `: A1-A4 : multi row cell`: You can specify a multi row / column cell
-  with this format. Norg also has the concept of `&variable&` which
-  holds some value, controllable with [macros](#macros)
+  with this format.
 
 #### Alignments
 
@@ -634,6 +636,7 @@ represent the same thing.
 
 ``` norg
 @table
+(This is not a valid table, just added the wrapper to avoid parser errors)
 | Head a    |    Head b |   Head c  |
 | --------- | --------- | --------- |
 | multi     | multi col cell        |
