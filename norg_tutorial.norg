@@ -238,7 +238,7 @@ version: 1.1.1
     You will want {https://github.com/nvim-neorg/neorg/wiki/Markdown-Export}[`core.export.markdown`] as well
     to export your files to markdown format.
 
-    Read {** Import / Export} section for instructions for other filetypes in detail.
+    Read {** Export / Import} section for instructions for other filetypes in detail.
 
 *** `core.summary`
     - {https://github.com/nvim-neorg/neorg/wiki/Summary}
@@ -292,7 +292,7 @@ version: 1.1.1
     @end
 
 *** Export: `norganic + pandoc + Norg.jl`
-    {https://github.com/Klafyvel/Norg.jl/}[`Norg.jl`] is a project to parse norg format file written in lua.
+    {https://github.com/Klafyvel/Norg.jl/}[`Norg.jl`] is a project to parse norg format file written in julia.
     {https://github.com/klafyvel/norganic}[`norganic`] is a frontend of `Norg.jl` to use the tool from command line.
 
     For installation document, please read norganic's {https://github.com/klafyvel/norganic}[README].
@@ -495,9 +495,9 @@ version: 1.1.1
 *** Attached Modifier Extensions (WIP)
     Macros or labels attached on attached modifiers.
 
-    Best example is the below where `(code:norg)` extends the inline code block (backticks).
+    Best example is the below where `(lang:norg)` extends the inline code block (backticks).
     |example
-    - `* Heading`(code:norg)
+    - `* Heading`(lang:norg)
     |end
 
 *** Detached Modifier Extensions (WIP)
