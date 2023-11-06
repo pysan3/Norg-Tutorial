@@ -337,7 +337,7 @@ You will want
 [`core.export.markdown`](https://github.com/nvim-neorg/neorg/wiki/Markdown-Export)
 as well to export your files to markdown format.
 
-Read [Import / Export](#import--export) section for instructions for
+Read [Export / Import](#export--import) section for instructions for
 other filetypes in detail.
 
 ### `core.summary`
@@ -358,24 +358,16 @@ It seems that it has some bugs that are being worked on.
 - <https://github.com/nvim-neorg/neorg/wiki/Looking-Glass>
 
 > The looking glass module provides a simple way to edit code blocks in
-> an
->
-> external buffer, which allows LSPs and other language-specific tools
-> to
->
-> kick in.
+> an external buffer, which allows LSPs and other language-specific
+> tools to kick in.
 
-> The magnify command can be accessed by running \`:Neorg keybind all
->
-> core.looking-glass.magnify-code-block\` with your cursor underneath
-> the
->
-> code block you would like to magnify - it is not bound to any key as
-> of
->
-> currently, but you may map it yourself via the core.keybinds module.
+> The magnify command can be accessed by running
+> `:Neorg keybind all core.looking-glass.magnify-code-block` with your
+> cursor underneath the code block you would like to magnify - it is not
+> bound to any key as of currently, but you may map it yourself via the
+> core.keybinds module.
 
-\![looking-glass](https://user-images.githubusercontent.com/76052559/216782314-5d82907f-ea6c-44f9-9bd8-1675f1849358.gif)
+![looking-glass](https://user-images.githubusercontent.com/76052559/216782314-5d82907f-ea6c-44f9-9bd8-1675f1849358.gif)
 
 ## Export / Import
 
@@ -415,7 +407,7 @@ end
 ### Export: `norganic + pandoc + Norg.jl`
 
 [`Norg.jl`](https://github.com/Klafyvel/Norg.jl/) is a project to parse
-norg format file written in lua.
+norg format file written in julia.
 [`norganic`](https://github.com/klafyvel/norganic) is a frontend of
 `Norg.jl` to use the tool from command line.
 
@@ -695,11 +687,11 @@ ones that connects to database soon ~~I mean pretty in long term...~~.
 
 Macros or labels attached on attached modifiers.
 
-Best example is the below where `(code:norg)` extends the inline code
+Best example is the below where `(lang:norg)` extends the inline code
 block (backticks).
 
 ``` norg
-- `* Heading`(code:norg)
+- `* Heading`(lang:norg)
 ```
 
 ### Detached Modifier Extensions (WIP)
@@ -803,7 +795,7 @@ with markdown and I hope this will not become the correct way.)
   !{https://user-images.githubusercontent.com/76052559/150838408-1a021d7b-1891-4cab-b16e-6b755e741e87.png}[Norg format]
 ```
 
-Example: \![Norg
+Example: ![Norg
 format](https://user-images.githubusercontent.com/76052559/150838408-1a021d7b-1891-4cab-b16e-6b755e741e87.png)
 
 ## Sync with Git, Nextcloud, etc
