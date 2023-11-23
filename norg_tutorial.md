@@ -1,10 +1,10 @@
 ``` document.meta
-title: norg_tutorial
+title: Norg Tutorial
 description:
 authors: takuto
 categories:
 created: 2023-11-05T15:01:09+0900
-updated: 2023-11-05T15:01:09+0900
+updated: 2023-11-23T21:29:42+0900
 version: 1.1.1
 ```
 
@@ -55,8 +55,8 @@ Quickstart](https://github.com/nvim-neorg/neorg/#-installationquickstart)
 
 ## Kickstart Config
 
-Here is my basic config. I'll explain about `plugins` in
-[Plugins](#plugins).
+Here is my basic config. I'll explain about `modules` in
+[Modules](#modules).
 
 ``` lua
 -- lazy.nvim spec
@@ -72,7 +72,7 @@ local M = {
   build = ":Neorg sync-parsers",
   cmd = "Neorg",
 }
-local plugins = {
+local modules = {
   ["core.defaults"] = {},
   ["core.completion"] = { config = { engine = "nvim-cmp", name = "[Norg]" } },
   ["core.integrations.nvim-cmp"] = {},
@@ -94,7 +94,7 @@ local plugins = {
   },
 }
 M.opts = {
-  load = plugins,
+  load = modules,
 }
 return M
 ```
@@ -106,7 +106,7 @@ I'd really recommend this as well 😄
 
 ### `core.dirman`
 
-This plugin manages what are called *workspaces*.
+This module manages what are called *workspaces*.
 
 You can define multiple workspaces at
 `config["core.dirman"].config.workspaces`, and open with command
@@ -123,15 +123,15 @@ section.
 
 # How to Write Your Notes
 
-## Basics of Plugins
+## Basics of Modules
 
-There is a config option `config.load = {}` to define plugins you want
+There is a config option `config.load = {}` to define modules you want
 to use.
 
-<sub>I decomposed that into a local var `plugins` in above code for
+<sub>I decomposed that into a local var `modules` in above code for
 simplicity tho.</sub>
 
-More information about plugins in [Plugins](#plugins) section. I'd
+More information about modules in [Modules](#modules) section. I'd
 recommend just simply adding the ones already stated in [Kickstart
 Config](#kickstart-config).
 
@@ -273,9 +273,9 @@ that video.
 
 - &variable&: <span class="variable">variable</span> (verbatim)
 
-# Plugins
+# Modules
 
-Keys passed to `config.load` are name of plugins. Their documents can be
+Keys passed to `config.load` are name of modules. Their documents can be
 found in [Neorg - Wiki](https://github.com/nvim-neorg/neorg/wiki) -\>
 Pages.
 
@@ -284,7 +284,7 @@ Config](#kickstart-config), but here are ones I personally use on top of
 them.
 
 ``` lua
-local plugins = {
+local modules = {
   ... -- ones mentioned in {** Kickstart Config}
   ["core.esupports.metagen"] = { config = { type = "auto", update_date = true } },
   ["core.qol.toc"] = {},
@@ -304,7 +304,7 @@ local plugins = {
 }
 ```
 
-## Notes for Important Plugin
+## Notes for Important Modules
 
 ### `core.journal`
 
@@ -710,7 +710,7 @@ is *TODO item* and *PENDING* and *PRIORITY A (A is highest)*.
 
 ## Your Own Module
 
-If you want to create your own plugin for neorg, this video is very
+If you want to create your own module for neorg, this video is very
 useful. [YouTube - Neorg Custom
 Modules](https://www.youtube.com/watch?v=j4lTvIGRhmw&list=PLxpY86LRR3B0rtOBjXAsq1XnsOt4m4owu)
 

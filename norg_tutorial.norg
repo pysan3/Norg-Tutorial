@@ -1,10 +1,10 @@
 @document.meta
-title: norg_tutorial
+title: Norg Tutorial
 description:
 authors: takuto
 categories:
 created: 2023-11-05T15:01:09+0900
-updated: 2023-11-05T15:01:09+0900
+updated: 2023-11-23T21:29:42+0900
 version: 1.1.1
 @end
 
@@ -33,7 +33,7 @@ version: 1.1.1
    -- {https://github.com/nvim-neorg/tree-sitter-norg/issues/7#issuecomment-1291508121}[Issue and How to solve]
 
 ** Kickstart Config
-   Here is my basic config. I'll explain about `plugins` in {* Plugins}.
+   Here is my basic config. I'll explain about `modules` in {* Modules}.
 
    @code lua
    -- lazy.nvim spec
@@ -49,7 +49,7 @@ version: 1.1.1
      build = ":Neorg sync-parsers",
      cmd = "Neorg",
    }
-   local plugins = {
+   local modules = {
      ["core.defaults"] = {},
      ["core.completion"] = { config = { engine = "nvim-cmp", name = "[Norg]" } },
      ["core.integrations.nvim-cmp"] = {},
@@ -71,7 +71,7 @@ version: 1.1.1
      },
    }
    M.opts = {
-     load = plugins,
+     load = modules,
    }
    return M
    @end
@@ -81,7 +81,7 @@ version: 1.1.1
    I'd really recommend this as well 😄
 
 *** `core.dirman`
-    This plugin manages what are called /workspaces/.
+    This module manages what are called /workspaces/.
 
     You can define multiple workspaces at `config["core.dirman"].config.workspaces`, and open with
     command `:Neorg workspace <name-of-workspace>`.
@@ -93,12 +93,12 @@ version: 1.1.1
     Or, it can be abbreviated to `$/` when referring from files in the same workspace. More info in {* Links} section.
 
 * How to Write Your Notes
-** Basics of Plugins
-   There is a config option `config.load = {}` to define plugins you want to use.
+** Basics of Modules
+   There is a config option `config.load = {}` to define modules you want to use.
 
-   ,I decomposed that into a local var `plugins` in above code for simplicity tho.,
+   ,I decomposed that into a local var `modules` in above code for simplicity tho.,
 
-   More information about plugins in {* Plugins} section.
+   More information about modules in {* Modules} section.
    I'd recommend just simply adding the ones already stated in {** Kickstart Config}.
 
 ** How to Write Notes
@@ -187,13 +187,13 @@ version: 1.1.1
   - \$inline math\$: $f(x) = y$ (verbatim)
   - \&variable\&: &variable& (verbatim)
 
-* Plugins
-  Keys passed to `config.load` are name of plugins. Their documents can be found in
+* Modules
+  Keys passed to `config.load` are name of modules. Their documents can be found in
   {https://github.com/nvim-neorg/neorg/wiki}[Neorg - Wiki] -> Pages.
 
   I already mentioned the necessary ones in {** Kickstart Config}, but here are ones I personally use on top of them.
   @code lua
-  local plugins = {
+  local modules = {
     ... -- ones mentioned in {** Kickstart Config}
     ["core.esupports.metagen"] = { config = { type = "auto", update_date = true } },
     ["core.qol.toc"] = {},
@@ -213,7 +213,7 @@ version: 1.1.1
   }
   @end
 
-** Notes for Important Plugin
+** Notes for Important Modules
 *** `core.journal`
     - {https://github.com/nvim-neorg/neorg/wiki/Journal}
 
@@ -506,7 +506,7 @@ version: 1.1.1
     |end
 
 ** Your Own Module
-   If you want to create your own plugin for neorg, this video is very useful.
+   If you want to create your own module for neorg, this video is very useful.
    {https://www.youtube.com/watch?v=j4lTvIGRhmw&list=PLxpY86LRR3B0rtOBjXAsq1XnsOt4m4owu}[YouTube - Neorg Custom Modules]
 
    Here's one external module I implemented: {https://github.com/pysan3/neorg-templates}[neorg-templates],
