@@ -1,13 +1,3 @@
-``` document.meta
-title: Norg Tutorial
-description:
-authors: takuto
-categories:
-created: 2023-11-05T15:01:09+0900
-updated: 2023-11-23T21:29:42+0900
-version: 1.1.1
-```
-
 # Norg Tutorial
 
 \*This page is generated from
