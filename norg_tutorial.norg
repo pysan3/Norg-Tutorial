@@ -209,6 +209,7 @@ version: 1.1.1
     ["core.export"] = {},
     ["core.export.markdown"] = { config = { extensions = "all" } },
     ["core.summary"] = {},
+    ["core.tangle"] = { config = { report_on_empty = false } },
     ["core.ui.calendar"] = {},
     ["core.journal"] = {
       config = {
@@ -256,12 +257,56 @@ version: 1.1.1
     - ✅ -{https://github.com/nvim-neorg/neorg/issues/1108}-
     - {https://github.com/nvim-neorg/neorg/issues/1071}
 
+*** `core.tangle`
+    - {https://github.com/nvim-neorg/neorg/wiki/Tangling}
+
+    Use `:Neorg tangle current-file` to export the code blocks in the current file into another file.
+
+    Basics are listed below, but you've got more options to control the output.
+    See the {https://github.com/nvim-neorg/neorg/wiki/Tangling#usage-tutorial}[official wiki] for more information.
+
+**** Tangle each code block.
+     |example
+     #tangle init.lua
+     @code lua
+     -- This will be tangled to init.lua
+     print("Hello from init.lua!")
+     @end
+     |end
+
+**** Tangle entire document.
+     Specify output file inside `@document.meta`.
+     - Want to export to multiple files? => {https://github.com/nvim-neorg/neorg/wiki/Tangling#global-tangling-for-multiple-files}[More complex options.]
+     |example
+     @document.meta
+     tangle: ./init.lua
+     @end
+
+     @code lua
+     -- This will be tangled to init.lua
+     print("Hello from init.lua!")
+     @end
+
+     #tangle.none
+     @code lua
+     -- Ignore this code block
+     print("Not tangled.")
+     @end
+     |end
+
+**** Automatically tangle current file on save using `autocmd`.
+     @code lua
+     vim.api.nvim_create_autocmd("BufWritePost", {
+       pattern = "*.norg",
+       command = "Neorg tangle current-file",
+     })
+     @end
+
 *** `core.looking-glass`
     - {https://github.com/nvim-neorg/neorg/wiki/Looking-Glass}
 
-    > The looking glass module provides a simple way to edit code blocks in an external buffer, which allows LSPs and other language-specific tools to kick in.
-
-    > The magnify command can be accessed by running `:Neorg keybind all core.looking-glass.magnify-code-block` with your cursor underneath the code block you would like to magnify - it is not bound to any key as of currently, but you may map it yourself via the core.keybinds module.
+    Use `:Neorg keybind all core.looking-glass.magnify-code-block` to edit code blocks in an external buffer,
+    which allows LSPs and other language-specific tools to kick in.
 
     !{https://user-images.githubusercontent.com/76052559/216782314-5d82907f-ea6c-44f9-9bd8-1675f1849358.gif}[looking-glass]
 
