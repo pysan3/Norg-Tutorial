@@ -3,6 +3,12 @@
 \*This page is generated from
 [`./norg_tutorial.norg`](./norg_tutorial.norg)
 
+I'd suggest reading
+[`./norg_tutorial.md`](https://github.com/pysan3/Norg-Tutorial/blob/main/norg_tutorial.md)
+first to do the installation and then clone the repo locally to read
+[How to Write Notes](norg_tutorial.norg#how-to-write-notes) in your
+neovim with the neorg plugin :)
+
 ## Useful Videos
 
 - [From No Org to Neorg -
@@ -135,6 +141,13 @@ Run `:Neorg toggle-concealer` to see the raw text.
 
 - Spec: [Structural Detached
   Modifiers](1.0-specification.norg#structural-detached-modifiers)
+
+  - This links to a local copy of
+    <https://github.com/nvim-neorg/norg-specs/blob/main/1.0-specification.norg>.
+
+  - Read [Before you
+    start](https://github.com/pysan3/Norg-Tutorial#before-you-start) and
+    download these files.
 
 Normal text here. Single new line will be ignored.
 

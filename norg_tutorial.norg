@@ -11,6 +11,10 @@ version: 1.1.1
 * Norg Tutorial
   *This page is generated from {./norg_tutorial.norg}[`./norg_tutorial.norg`]
 
+  I'd suggest reading {https://github.com/pysan3/Norg-Tutorial/blob/main/norg_tutorial.md}[`./norg_tutorial.md`]
+  first to do the installation and then clone the repo locally to read {:norg_tutorial:** How to Write Notes}
+  in your neovim with the neorg plugin :)
+
 ** Useful Videos
    - {https://www.youtube.com/watch?v=NnmRVY22Lq8&list=PLx2ksyallYzVI8CN1JMXhEf62j2AijeDa}[From No Org to Neorg - Playlist]
    -- {https://youtu.be/NnmRVY22Lq8}[From No Org to Neorg - The Basics | #1]
@@ -108,6 +112,8 @@ version: 1.1.1
 
 * Heading 1
   - Spec: {:1.0-specification:** Structural Detached Modifiers}
+  -- This links to a local copy of {https://github.com/nvim-neorg/norg-specs/blob/main/1.0-specification.norg}.
+  -- Read {https://github.com/pysan3/Norg-Tutorial#before-you-start}[Before you start] and download these files.
 
   Normal text here.
   Single new line will be ignored.
