@@ -352,7 +352,7 @@ entire workspace with links to each respective entry.
 
 It seems that it has some bugs that are being worked on.
 
-- <https://github.com/nvim-neorg/neorg/issues/1108>
+- ✅ ~~<https://github.com/nvim-neorg/neorg/issues/1108>~~
 
 - <https://github.com/nvim-neorg/neorg/issues/1071>
 
