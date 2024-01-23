@@ -82,7 +82,7 @@ version: 1.1.1
 
    If you still have problems setting up `neorg`, `@d-r-a-b` explains more thoroughly in
    {https://gist.github.com/d-r-a-b/3af7083a018be15e6c1d1d2c5317e9c7}[Understanding Neorg dependencies].
-   I'd really recommend this as well 😄
+   I'd really recommend this as well.
 
 *** `core.dirman`
     This module manages what are called /workspaces/.

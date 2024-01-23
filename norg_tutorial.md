@@ -98,7 +98,7 @@ return M
 If you still have problems setting up `neorg`, `@d-r-a-b` explains more
 thoroughly in [Understanding Neorg
 dependencies](https://gist.github.com/d-r-a-b/3af7083a018be15e6c1d1d2c5317e9c7).
-I'd really recommend this as well 😄
+I'd really recommend this as well.
 
 ### `core.dirman`
 
