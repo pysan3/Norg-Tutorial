@@ -4,7 +4,7 @@ description:
 authors: takuto
 categories:
 created: 2023-11-05T15:01:09+0900
-updated: 2023-11-23T21:29:42+0900
+updated: 2024-02-14T12:18:13+0900
 version: 1.1.1
 @end
 
@@ -366,7 +366,12 @@ version: 1.1.1
     # gfm (GitHub flavored markdown)
     @end
 
-    {/ ./norg_tutorial.md} is generated using this tool at the moment.
+    {/ ./norg_tutorial.md} is generated using this tool with a combination of
+    {https://github.com/pysan3/dotfiles/blob/main/static/remove_empty_lines_in_lists.py}[my custom script]
+    to remove unnecessary newlines when exporting to markdown at the moment.
+    @code bash
+    $ pandoc -f init.lua -t gfm /path/to/norg_tutorial.norg | python remove_empty_lines_in_lists.py > /path/to/norg_tutorial.md
+    @end
 
 *** Import: `pandoc + minorg`
     {https://github.com/pysan3/minorg}[`minorg`] is a tool to convert pandoc json format to norg file.
@@ -629,11 +634,11 @@ version: 1.1.1
      ~ Go to {https://nextcloud.your.domain/apps/notes}
      ~ Go down to `Notes settings`
      ~ Change `File extension for new notes`
-     -- `User defined` -> `.norg`
+     ~~ `User defined` -> `.norg`
 
 **** On Your Phone
      ~ Access page with safari. ,I'm sorry but I use iPhone...,
-     -- Shoud work on other phones as well tho.
+     ~~ Shoud work on other phones as well tho.
      ~ Go to {https://nextcloud.your.domain/apps/notes}
      ~ Press `share` to `Add page to home`.
      ~ You have a new app that jumps directly to notes
