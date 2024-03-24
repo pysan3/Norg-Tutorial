@@ -27,30 +27,6 @@ Read this section. [Installation / Quickstart](https://github.com/nvim-neorg/neo
   - Details written in github README.
   - [Issue and How to solve](https://github.com/nvim-neorg/tree-sitter-norg/issues/7#issuecomment-1291508121)
 
-## v8.0 Luarocks Dependency
-
-From neorg v8.0, dependencies are managed by [luarocks.nvim]()(https://github.com/vhyrro/luarocks.nvim), which uses luarocks under the hood to manage **versioned** dependencies.
-
-This change brings a lot of benefits to both developers and users, but the biggest is that end users do no need to manage dependencies at all.
-
-Let's start by installing the plugin.
-
-``` lua
-return {
-  "vhyrro/luarocks.nvim",
-  priority = 1000,
-  config = true,
-}
-```
-
-This is the only required dependency. As you can see in the kickstart config below, delete all the lines except for luarocks and everything will be installed on its own from v8.0.
-
-However, if you define other dependencies such as [external modules](#your-own-module), you still need to install those via lazy.nvim and add them to the dependencies list.
-
-**Delete `build = ":Neorg sync-parsers` line from the kickstart config.**
-
-Read [vhyrro's blog - Neorg 8.0.0](https://vhyrro.github.io/posts/neorg-and-luarocks/#the-fix) for more details. If you encounter a bug, please report it to [Luarocks Issues Thread](https://github.com/nvim-neorg/neorg/issues/1342). That'll definitely help the developers!
-
 ## Kickstart Config
 
 Here is my basic config. I'll explain about `modules` in [Modules](#modules).
@@ -61,13 +37,12 @@ local M = {
   "nvim-neorg/neorg",
   ft = "norg",
   dependencies = {
-    "luarocks.nvim", -- this is it.
-    -- "nvim-treesitter/nvim-treesitter",
-    -- "nvim-treesitter/nvim-treesitter-textobjects",
-    -- "nvim-cmp",
-    -- "nvim-lua/plenary.nvim",
+    "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    "nvim-cmp",
+    "nvim-lua/plenary.nvim",
   },
-  -- build = ":Neorg sync-parsers", -- and delete this line.
+  build = ":Neorg sync-parsers",
   cmd = "Neorg",
 }
 local modules = {
