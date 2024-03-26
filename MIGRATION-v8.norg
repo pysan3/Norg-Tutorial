@@ -4,7 +4,7 @@ description: Tips and tricks for how to merge to neorg v8.
 authors: takuto
 categories:
 created: 2024-03-26T19:27:15+0900
-updated: 2024-03-26T21:31:15+0900
+updated: 2024-03-26T21:40:08+0900
 version: 1.1.1
 @end
 
@@ -55,7 +55,7 @@ version: 1.1.1
    - `sudo dnf install compat-lua-devel-5.1.5`: {https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017167912}[comment]
    - `sudo pacman -Syu luajit` or `lua51`: {https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017814358}[comment]
    - `sudo apt install liblua5.1-0-dev`: {https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017728318}[comment]
-   - Brew: PR required
+   - `brew install luarocks`: *not tested* {https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2020157539}[comment]
    - NixOS: PR required
    -- I think work has been done to make a flake of luarocks.nvim+neorg but I might be wrong.
    - Termux: unavailable. See {# Termux Users}.

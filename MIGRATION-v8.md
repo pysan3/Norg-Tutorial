@@ -33,7 +33,7 @@ Install the system dependencies based on your distribution.
 - `sudo dnf install compat-lua-devel-5.1.5`: [comment](https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017167912)
 - `sudo pacman -Syu luajit` or `lua51`: [comment](https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017814358)
 - `sudo apt install liblua5.1-0-dev`: [comment](https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017728318)
-- Brew: PR required
+- `brew install luarocks`: **not tested** [comment](https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2020157539)
 - NixOS: PR required
   - I think work has been done to make a flake of luarocks.nvim+neorg but I might be wrong.
 - Termux: unavailable. See [Termux Users](#termux-users).
