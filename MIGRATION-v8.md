@@ -12,7 +12,33 @@ Please do not run commands that are not listed here between the sections. Some c
 
 ## No Errors on Startup but Highlights won't Load
 
-Try to run `:=require("lua-utils")`.
+### Change `config =`
+
+If you have `config = true` for neorg spec change that to a function.
+
+The only working options are a) NO arguments at all or b) you at least pass `load = { ["core.defaults"] = {} }`.
+
+``` lua
+{
+  "nvim-neorg/neorg",
+  dependencies = { "luarocks.nvim" },
+  config = function()
+    -- Pick one of ...
+
+    -- a) NO arguments at all to setup
+    require("neorg").setup()
+
+    -- b) at least load "core.defaults"
+    require("neorg").setup({
+      load = {
+        ["core.defaults"] = {},
+      },
+    })
+  end,
+}
+```
+
+### Try to run `:=require("lua-utils")`.
 
 If you see a wall of errors, build process did not run successfully. So basically you do not have `luarocks.nvim` / `neorg` installed correctly no matter what you think.
 

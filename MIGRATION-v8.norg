@@ -4,7 +4,7 @@ description: Tips and tricks for how to merge to neorg v8.
 authors: takuto
 categories:
 created: 2024-03-26T19:27:15+0900
-updated: 2024-03-27T16:54:01-0500
+updated: 2024-03-28T06:25:40+0900
 version: 1.1.1
 @end
 
@@ -30,7 +30,32 @@ version: 1.1.1
 
 ** No Errors on Startup but Highlights won't Load
 
-   Try to run `:=require("lua-utils")`.
+*** Change `config =`
+
+    If you have `config = true` for neorg spec change that to a function.
+
+    The only working options are a) NO arguments at all or b) you at least pass `load = { ["core.defaults"] = {} }`.
+    @code lua
+    {
+      "nvim-neorg/neorg",
+      dependencies = { "luarocks.nvim" },
+      config = function()
+        -- Pick one of ...
+
+        -- a) NO arguments at all to setup
+        require("neorg").setup()
+
+        -- b) at least load "core.defaults"
+        require("neorg").setup({
+          load = {
+            ["core.defaults"] = {},
+          },
+        })
+      end,
+    }
+    @end
+
+*** Try to run `:=require("lua-utils")`.
 
    If you see a wall of errors, build process did not run successfully.
    So basically you do not have `luarocks.nvim` / `neorg` installed correctly no matter what you think.
