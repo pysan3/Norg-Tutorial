@@ -18,7 +18,7 @@ If you see a wall of errors, build process did not run successfully. So basicall
 
 Follow all instructions I provide including [Uninstall `luarocks.nvim` / `neorg`](#uninstall-luarocksnvim--neorg).
 
-If you follow all instructions and still cannot make it to work, please visit [Discord]($/norg_tutorial.norg#discord).
+If you follow all instructions and still cannot make it to work, please visit [Discord](https://discord.gg/T6EgTAX7ht).
 
 ## Termux Users
 
@@ -128,11 +128,11 @@ If you are on NixOS, a workaround is (ofc change the path to match your system)
 
 ### Performing luarocks `make` if Unix systems
 
-Umm, you probably did something wrong. Ask it on [Discord]($/norg_tutorial.norg#discord).
+Umm, you probably did something wrong. Ask it on [Discord](https://discord.gg/T6EgTAX7ht).
 
 ### Performing luarocks `make install` if Unix systems
 
-Umm, you probably did something wrong. Ask it on [Discord]($/norg_tutorial.norg#discord).
+Umm, you probably did something wrong. Ask it on [Discord](https://discord.gg/T6EgTAX7ht).
 
 ## Update Dependencies
 

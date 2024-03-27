@@ -4,7 +4,7 @@ description: Tips and tricks for how to merge to neorg v8.
 authors: takuto
 categories:
 created: 2024-03-26T19:27:15+0900
-updated: 2024-03-26T21:40:08+0900
+updated: 2024-03-28T04:50:22+0900
 version: 1.1.1
 @end
 
@@ -37,7 +37,7 @@ version: 1.1.1
 
    Follow all instructions I provide including {** Uninstall `luarocks.nvim` / `neorg`}.
 
-   If you follow all instructions and still cannot make it to work, please visit {:$/norg_tutorial:** Discord}[Discord].
+   If you follow all instructions and still cannot make it to work, please visit {https://discord.gg/T6EgTAX7ht}[Discord].
 
 ** Termux Users
 
@@ -163,11 +163,11 @@ version: 1.1.1
 
 *** Performing luarocks `make` if Unix systems
 
-    Umm, you probably did something wrong. Ask it on {:$/norg_tutorial:** Discord}[Discord].
+    Umm, you probably did something wrong. Ask it on {https://discord.gg/T6EgTAX7ht}[Discord].
 
 *** Performing luarocks `make install` if Unix systems
 
-    Umm, you probably did something wrong. Ask it on {:$/norg_tutorial:** Discord}[Discord].
+    Umm, you probably did something wrong. Ask it on {https://discord.gg/T6EgTAX7ht}[Discord].
 
 ** Update Dependencies
 
