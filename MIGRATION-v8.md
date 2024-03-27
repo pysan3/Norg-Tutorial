@@ -34,8 +34,7 @@ Install the system dependencies based on your distribution.
 - `sudo pacman -Syu luajit` or `lua51`: [comment](https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017814358)
 - `sudo apt install liblua5.1-0-dev`: [comment](https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017728318)
 - `brew install luarocks`: **not tested** [comment](https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2020157539)
-- NixOS: PR required
-  - I think work has been done to make a flake of luarocks.nvim+neorg but I might be wrong.
+- NixOS: see [NixOS](#nixos).
 - Termux: unavailable. See [Termux Users](#termux-users).
 
 Do not forget to update your system as well. Up to date system is always better regardless of my advice here.
@@ -113,13 +112,52 @@ Most likely luarocks could not find lua header files (`lua.h`) in your system. M
 
 Run `locate lua.h` and find the most relevant file. Pass the dirname to `luarocks_build_args` as below.
 
-If you are on NixOS, a workaround is (ofc change the path to match your system)
+#### NixOS
+
+If you are on NixOS, there are a few ways to do things, as always.
+
+One way to do this is by adding lua or luajit to your neovim's bin path. There will be a few different ways to do this depending on how you're installing neovim on NixOS, this is how [I](https://github.com/benlubas/nix-config/blob/af644f0c157182c5f5e033959ca68db968c5dc38/programs/neovim.nix) do it with plain old nix:
+
+``` nix
+{ lib, pkgs, ... }:
+
+let
+  binpath = lib.makeBinPath (with pkgs; [
+    lua # required for luarocks.nvim to work
+    # ... other language servers and stuff only nvim needs
+  ]);
+  neovimConfig = pkgs.neovimUtils.makeNeovimConfig {
+    # ... whatever else you normally have here
+    customRC = "luafile ~/.config/nvim/init.lua";
+  };
+  fullConfig = (neovimConfig // {
+    wrapperArgs = lib.escapeShellArgs neovimConfig.wrapperArgs
+      + " --prefix PATH : ${binpath}"; # this is the important part!
+  });
+in {
+  nixpkgs.overlays = [
+    (_: super: {
+      neovim-custom = pkgs.wrapNeovimUnstable
+        (super.neovim-unwrapped.overrideAttrs (oldAttrs: {
+          buildInputs = oldAttrs.buildInputs ++ [ super.tree-sitter ];
+        })) fullConfig;
+    })
+  ];
+  environment.systemPackages = with pkgs; [
+    neovim-custom
+  ];
+}
+```
+
+Another possible workaround is to tell luarocks.nvim where in the nix store you're luajit is installed. This path will vary by system, and will of course break when you update, so it's not recommended.
 
 ``` lua
 {
   "vhyrro/luarocks.nvim",
   opts = {
     luarocks_build_args = {
+      -- NOTE: This path will be different for you.
+      -- Find it with `nix-store --query $(which luajit)` Don't forget to add the `/include`
       "--with-lua-include=/nix/store/98blcb69q9qy0k279xjk10lcmfwnd4rg-luajit-2.1.1693350652/include",
     },
   },
