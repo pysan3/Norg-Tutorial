@@ -4,7 +4,7 @@ description: Tips and tricks for how to merge to neorg v8.
 authors: takuto
 categories:
 created: 2024-03-26T19:27:15+0900
-updated: 2024-03-27T16:45:10-0500
+updated: 2024-03-27T16:49:38-0500
 version: 1.1.1
 @end
 
@@ -150,6 +150,7 @@ version: 1.1.1
     Pass the dirname to `luarocks_build_args` as below.
 
 **** NixOS
+
      If you are on NixOS, there are a few ways to do things, as always.
 
      One way to do this is by adding lua or luajit to your neovim's bin path. There
