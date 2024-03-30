@@ -56,10 +56,10 @@ When neorg v9 is out, there will be a better treesitter parser (v3) and a mobile
 
 Install the system dependencies based on your distribution.
 
-- `sudo dnf install compat-lua-devel-5.1.5`: [comment](https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017167912)
-- `sudo pacman -Syu luajit` or `lua51`: [comment](https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017814358)
-- `sudo apt install liblua5.1-0-dev`: [comment](https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017728318)
-- `brew install luarocks`: **not tested** [comment](https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2020157539)
+- `sudo dnf install luajit compat-lua-devel-5.1.5`: [comment](https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017167912)
+- `sudo pacman -Syu luajit lua51`: [comment](https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017814358)
+- `sudo apt install luajit liblua5.1-0-dev`: [comment](https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017728318)
+- `brew install luajit luarocks`: [comment](https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2020157539)
 - NixOS: see [NixOS](#nixos).
 - Termux: unavailable. See [Termux Users](#termux-users).
 

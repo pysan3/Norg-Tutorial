@@ -4,7 +4,7 @@ description: Tips and tricks for how to merge to neorg v8.
 authors: takuto
 categories:
 created: 2024-03-26T19:27:15+0900
-updated: 2024-03-28T06:25:40+0900
+updated: 2024-03-31T01:02:07+0900
 version: 1.1.1
 @end
 
@@ -77,10 +77,10 @@ version: 1.1.1
 
    Install the system dependencies based on your distribution.
 
-   - `sudo dnf install compat-lua-devel-5.1.5`: {https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017167912}[comment]
-   - `sudo pacman -Syu luajit` or `lua51`: {https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017814358}[comment]
-   - `sudo apt install liblua5.1-0-dev`: {https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017728318}[comment]
-   - `brew install luarocks`: *not tested* {https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2020157539}[comment]
+   - `sudo dnf install luajit compat-lua-devel-5.1.5`: {https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017167912}[comment]
+   - `sudo pacman -Syu luajit lua51`: {https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017814358}[comment]
+   - `sudo apt install luajit liblua5.1-0-dev`: {https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2017728318}[comment]
+   - `brew install luajit luarocks`: {https://github.com/nvim-neorg/neorg/issues/1342#issuecomment-2020157539}[comment]
    - NixOS: see {# NixOS}.
    - Termux: unavailable. See {# Termux Users}.
 
